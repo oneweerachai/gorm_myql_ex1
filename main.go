@@ -30,7 +30,7 @@ func main() {
 	sqlDB.SetConnMaxLifetime(time.Hour)
 
 	var now = time.Now()
-	var age = 17
+	var age = 27
 	user := User{Name: "Jinzhu", Age: age, Birthday: &now}
 
 	result := db.Create(&user) // pass pointer of data to Create
@@ -41,9 +41,9 @@ func main() {
 
 	fmt.Printf("user.ID = %v  rows affected: %v", user.ID, result.RowsAffected)
 
-	// db.Model(&User{}).Create(map[string]interface{}{
-	// 	"Name": "Weera", "Age": 30,
-	// })
+	db.Model(&User{}).Create(map[string]interface{}{
+		"Name": "Weera", "Age": 30,
+	})
 
 }
 
